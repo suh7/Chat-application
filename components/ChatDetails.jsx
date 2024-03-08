@@ -58,6 +58,7 @@ const ChatDetails = ({ chatId }) => {
 
       if (res.ok) {
         setText("");
+        await getChatDetails()
       }
     } catch (err) {
       console.log(err);
