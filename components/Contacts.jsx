@@ -74,7 +74,7 @@ const Contacts = () => {
   return loading ? (
     <Loader />
   ) : (
-    <div className="create-chat-container">
+    <div className="create-chat-container text-white">
       <input
         placeholder="Search contact..."
         className="input-search"
@@ -82,8 +82,8 @@ const Contacts = () => {
         onChange={(e) => setSearch(e.target.value)}
       />
 
-      <div className="contact-bar">
-        <div className="contact-list">
+      <div className="contact-bar ">
+        <div className="contact-list  bg-gray-900 ">
           <p className="text-body-bold">Select or Deselect</p>
 
           <div className="flex flex-col flex-1 gap-5 overflow-y-scroll custom-scrollbar">
@@ -94,7 +94,7 @@ const Contacts = () => {
                 onClick={() => handleSelect(user)}
               >
                 {selectedContacts.find((item) => item === user) ? (
-                  <CheckCircle sx={{ color: "red" }} />
+                  <CheckCircle sx={{ color: "#4B0082" }} />
                 ) : (
                   <RadioButtonUnchecked />
                 )}

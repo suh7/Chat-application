@@ -17,7 +17,7 @@ const ChatBox = ({ chat, currentUser, currentChatId }) => {
 
   return (
     <div
-      className={`chat-box ${chat._id === currentChatId ? "bg-blue-2" : ""}`}
+      className={`chat-box ${chat._id === currentChatId ? "bg-purple-950" : ""}`}
       onClick={() => router.push(`/chats/${chat._id}`)}
     >
       <div className="chat-info">

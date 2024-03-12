@@ -58,3 +58,5 @@ export const POST = async (req, { params }) => {
     return new Response("Failed to update seen messages", { status: 500 });
   }
 };
+
+

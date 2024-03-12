@@ -64,3 +64,46 @@ export const POST = async (req) => {
     return new Response("Failed to create new message", { status: 500 });
   }
 };
+
+export const DELETE = async (req) => {
+  try {
+    await connectToDB();
+
+    const { messageId, userId } = await req.json();
+
+    // Find the message to be deleted
+    const messageToDelete = await Message.findById(messageId);
+
+    if (!messageToDelete) {
+      return new Response("Message not found", { status: 404 });
+    }
+
+    // Check if the user has permission to delete the message
+    if (messageToDelete.sender.toString() !== userId) {
+      return new Response("Permission denied", { status: 403 });
+    }
+
+    // Delete the message
+    await Message.findByIdAndDelete(messageId);
+
+    // Update the chat to remove the deleted message
+    const updatedChat = await Chat.findByIdAndUpdate(
+      messageToDelete.chat,
+      {
+        $pull: { messages: messageId },
+      },
+      { new: true }
+    );
+
+    // Trigger a Pusher event for the chat about the message deletion
+    await pusherServer.trigger(updatedChat._id.toString(), "delete-message", {
+      messageId,
+    });
+
+    return new Response("Message deleted successfully", { status: 200 });
+  } catch (err) {
+    console.error(err);
+    return new Response("Failed to delete message", { status: 500 });
+  }
+};
+

@@ -58,12 +58,14 @@ const ChatDetails = ({ chatId }) => {
 
       if (res.ok) {
         setText("");
-        await getChatDetails()
+        await getChatDetails();
       }
     } catch (err) {
       console.log(err);
     }
   };
+
+
 
   const sendPhoto = async (result) => {
     try {
@@ -78,6 +80,13 @@ const ChatDetails = ({ chatId }) => {
           photo: result?.info?.secure_url,
         }),
       });
+
+      if (res.ok) {
+        setChat("");
+        await getChatDetails();
+
+      }
+
     } catch (err) {
       console.log(err);
     }
@@ -156,6 +165,7 @@ const ChatDetails = ({ chatId }) => {
               key={index}
               message={message}
               currentUser={currentUser}
+              getChatDetails={getChatDetails}
             />
           ))}
           <div ref={bottomRef} />
@@ -166,7 +176,7 @@ const ChatDetails = ({ chatId }) => {
             <CldUploadButton
               options={{ maxFiles: 1 }}
               onUpload={sendPhoto}
-              uploadPreset="upecg01j"
+              uploadPreset="nwvcgooo"
             >
               <AddPhotoAlternate
                 sx={{

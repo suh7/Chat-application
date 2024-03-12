@@ -7,17 +7,33 @@ import BottomBar from "@components/BottomBar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Halo Chat App",
+  title: "Convonest",
   description: "A Next.js 14 Chat App ",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-blue-2`}>
+  <body
+className={`${inter.className}`}
+style={{
+  backgroundImage: 'url("/assets/black.avif")',
+  backgroundRepeat: 'no-repeat',
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  minHeight: '100vh',
+  backgroundColor: 'rgba(0, 0, 0, 1.0)', // Adjust the last value (0.5) to change opacity
+}}
+>
+  
+
+
+
         <Provider>
           <TopBar />
-          {children}
+         
+            {children}
+          
           <BottomBar />
         </Provider>
       </body>

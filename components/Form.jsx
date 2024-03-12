@@ -59,9 +59,12 @@ const Form = ({ type }) => {
   
 
   return (
-    <div className="auth">
+    <div className="auth ">
       <div className="content">
-        <img src="/assets/logo.png" alt="logo" className="logo" />
+      <h2 className="logo text-center" style={{ fontSize: "30px" }}>
+  <span className="text-white font-bold">Convonest</span>
+</h2>
+
 
         <form className="form" onSubmit={handleSubmit(onSubmit)}>
           {type === "register" && (
@@ -84,7 +87,7 @@ const Form = ({ type }) => {
                 <PersonOutline sx={{ color: "#737373" }} />
               </div>
               {errors.username && (
-                <p className="text-red-500">{errors.username.message}</p>
+                <p className="text-white">{errors.username.message}</p>
               )}
             </div>
           )}
@@ -96,7 +99,7 @@ const Form = ({ type }) => {
                 {...register("email", { required: "Email is required" })}
                 type="email"
                 placeholder="Email"
-                className="input-field"
+                className="input-field "
               />
               <EmailOutlined sx={{ color: "#737373" }} />
             </div>
@@ -150,4 +153,4 @@ const Form = ({ type }) => {
   );
 };
 
-export default Form;
+export default Form;  

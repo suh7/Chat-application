@@ -6,6 +6,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 
+
+
+
+// import SunIcon from "./icons/SunIcon";
+// import MoonIcon from "./icons/MoonIcon";
+// import { useTheme } from "next-themes";
+
 const TopBar = () => {
   const pathname = usePathname();
 
@@ -17,26 +24,36 @@ const TopBar = () => {
   const user = session?.user;
 
   return (
-    <div className="topbar">
+    <div className="topbar ">
       <Link href="/chats">
-        <img src="/assets/logo.png" alt="logo" className="logo" />
+    
+      <h2 className="logo" style={{ fontSize: "30px" }}>
+  <span style={{ color: "rgb(107 33 168)", fontWeight: "bold" }}>C</span>
+  <span style={{ color: "white", fontWeight: "bold" }}>onvonest</span>
+  
+</h2>
+
+        {/* <img src="/assets/Convo-nest.png" alt="logo" className="logo" /> */}
       </Link>
 
       <div className="menu">
+      
         <Link
           href="/chats"
           className={`${
-            pathname === "/chats" ? "text-red-1" : ""
+            pathname === "/chats" ? "text-purple-600" : ""
           } text-heading4-bold`}
         >
           Chats
         </Link>
         <Link
-          href="/contacts"
-          className={`${
-            pathname === "/contacts" ? "text-red-1" : ""
-          } text-heading4-bold`}
-        >
+  href="/contacts"
+  className={`${
+    pathname === "/contacts" ? "text-purple-600" : ""
+  } text-heading4-bold`}
+>
+
+
           Contacts
         </Link>
 

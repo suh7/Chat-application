@@ -49,3 +49,4 @@ export const POST = async (req) => {
     return new Response("Failed to create a new chat", { status: 500 })
   }
 };
+
