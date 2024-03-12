@@ -70,7 +70,7 @@ const MessageBox = ({ message, currentUser, getChatDetails }) => {
 
         {message?.text ? (
           <>
-            <div className="flex">
+            <div className="flex items-center gap-4">
               <p className="message-text-sender">{message?.text}</p>
               <span className=" rotate-90 cursor-pointer"
                 onClick={(e) => {
@@ -84,7 +84,7 @@ const MessageBox = ({ message, currentUser, getChatDetails }) => {
             </div>
             {
               chatOptions ? (
-                <div className="bg-red-500 text-white p-4 rounded-lg cursor-pointer" 
+                <div className="bg-red-500 text-white p-4 rounded-lg" 
                   onClick = {async() =>{
                     await deleteMessage(message._id)
                   }
@@ -98,10 +98,34 @@ const MessageBox = ({ message, currentUser, getChatDetails }) => {
             }
           </>
         ) : (
-          <div className="flex">
+          <>
+          <div className="flex items-center gap-4">
             <img src={message?.photo} alt="message" className="message-photo" />
-            <span className="rotate-90">...</span>
+            <span className=" rotate-90 cursor-pointer"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setChatOptions(true);
+                  if(chatOptions){
+                    setChatOptions(false)
+                  }
+                }}
+              >...</span>
           </div>
+          {
+            chatOptions ? (
+              <div className="bg-red-500 text-white p-4 rounded-lg" 
+                onClick = {async() =>{
+                  await deleteMessage(message._id)
+                }
+                }
+              >
+                Delete
+              </div>
+            ) : (
+              <></>
+            )
+          }
+          </>
         )}
       </div>
     </div>
